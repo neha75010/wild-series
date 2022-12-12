@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Série #{{ program.id }}{% endblock %}
+
 {% block body %}
-<a href="{{ path('program_show', {id: 4}) }}"><h1>Program 4</h1></a>
+    <div class="card" style="width: 25rem;">
+  <img src="{{ asset('/build/images/' ~ program.poster) }}" class="card-img-top" alt="{{ program.title }} poster">
+  <div class="card-body">
+    <h5 class="card-title">{{ program.title }}</h5>
+    <p class="card-text">{{ program.synopsis }}</p>
+    <p>Catégorie : {{ program.category.name }}</p>
+     <a type="button" class="btn btn-outline-dark " href="{{ path('program_index') }}">Retour à la liste des programmes</a>
+  </div>
+</div>
 {% endblock %}

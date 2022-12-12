@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All category{% endblock %}
+
+{% block body %}
+    <div class="title-all-category">
+        <h1>Genre :</h1>
+    </div>
+
+    {% for category in categories %}
+    {% if (loop.index -1) is divisible by(3) %}
+        <div class="row w-100 m-0 p-0" >
+    {% endif %}
+
+            <div class= "d-grid col-3 category-all">
+                <h1><a class="badge bg-light btn btn-primary" href="{{ path("category_show", { categoryName: category.name }) }}">{{ category.name }}</a></h1>
+            </div>
+
+    {% if (loop.index ) is divisible by(3) %}
+        </div>
+    {% endif %}
+
+        {% else %}
+            Aucune catégorie trouvée.
+    {% endfor %}
+{% endblock %}

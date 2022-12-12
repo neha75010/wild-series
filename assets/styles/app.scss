@@ -1,3 +1,29 @@
 @import "custom";
 // Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
+
+.serie-all{
+    margin-left: 100px;
+   // margin-right: 60px;
+}
+
+.category-all{
+    margin-left: 100px;
+    padding-top: 30px;
+}
+
+.title-all-category{
+    margin-left: 35%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.title-all-programs{
+    margin-left: 40%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.specific-category{
+    justify-content: space-around; 
+}

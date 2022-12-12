@@ -1,7 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wild Series{% endblock %}
+{% block title %}All programs{% endblock %}
 
 {% block body %}
-<h1>{{ website }} index</h1>
+    <div class="title-all-programs">
+        <h1>Toutes les séries : </h1>
+    </div>
+    {% for program in programs %}
+
+        {% if (loop.index -1) is divisible by(3) %}
+            <div class="row w-100 m-0 p-0" >
+        {% endif %}
+
+            <div class="card serie-all col-3 mt-5 mb-5">
+                <img src="{{ asset('/build/images/' ~ program.poster) }}" class="card-img-top" alt="Symfony!"/>
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ program.title }}</h4>
+                    <h5 class="card-title">Catégorie : {{ program.category.name }}</h5>
+                    <p class="card-text">{{ program.synopsis }}</p>
+                    <a type="button" class="btn btn-outline-dark" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+                </div>
+            </div>
+
+        {% if (loop.index ) is divisible by(3) %}
+        </div>
+        {% endif %}
+        {% else %}
+            Aucune série trouvée.
+        
+    {% endfor %}
 {% endblock %}

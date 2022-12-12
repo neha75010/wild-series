@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category {{ category.name }}{% endblock %}
+
+{% block body %}
+     {% for program in programs %}
+
+    {% if (loop.index -1) is divisible by(2) %}
+            <div class="row w-100 m-0 p-0 justify-content-around">
+    {% endif %}
+
+    <div class="card mb-6 col-6 mt-5" style="max-width: 700px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ asset('/build/images/' ~ program.poster) }}" class="img-fluid rounded-start" alt="{{ program.title }} poster">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text">{{ program.synopsis }}</p>
+                    <p class="card-text"><small class="text-muted">Catégorie : {{ program.category.name }}</small></p>
+                    <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    {% if (loop.index ) is divisible by(2) %}
+        </div>
+    {% endif %}
+
+
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <a class="ref-return" href="{{ path('category_index') }}">
+        Retour à la liste des catégories
+    </a>
+
+    
+{% endblock %}
